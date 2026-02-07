@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Gauchada | Bodegón, Parrilla & Tango</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --oro: #d4af37;
+            --negro: #1a1a1a;
+            --rojo-vino: #800000;
+            --marron-cuero: #3d2b1f;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #f4ecd8;
+            background-image: url("https://www.transparenttextures.com/patterns/parchment.png");
+            color: var(--negro);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar con transición */
+        nav {
+            background: rgba(61, 43, 31, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 3px solid var(--oro);
+            transition: all 0.5s;
+        }
+
+        nav a {
+            color: var(--oro);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: white; }
+
+        /* Banner con Slider Automático */
+        .hero-slider {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .slide.active { opacity: 1; }
+
+        .hero-content {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border: 2px solid var(--oro);
+            backdrop-filter: blur(3px);
+            animation: slideUp 1.2s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Contenedor del Menú */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .category-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--rojo-vino);
+            margin: 60px 0 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Tarjetas de platos con imágenes */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .plato-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .plato-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .plato-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .plato-card:hover .plato-img {
+            transform: scale(1.1);
+        }
+
+        .plato-body { padding: 20px; text-align: center; }
+
+        .plato-name { font-size: 1.4rem; color: var(--marron-cuero); margin: 0; }
+
+        .plato-price { 
+            display: block; 
+            color: var(--rojo-vino); 
+            font-weight: bold; 
+            font-size: 1.3rem; 
+            margin: 10px 0; 
+        }
+
+        /* Botón WhatsApp */
+        .wsp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .wsp-float:hover { transform: scale(1.1) rotate(10deg); }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#cafe">Desayunos</a>
+    <a href="#entradas">Entradas</a>
+    <a href="#principales">La Parrilla</a>
+    <a href="#bebidas">Bebidas</a>
+    <a href="#postres">Postres</a>
+</nav>
+
+<div class="hero-slider">
+    <div class="slide active" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1612294037637-ec328d0e075e?q=80&w=2070');"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1589909202802-8f4aadce1849?q=80&w=2070');"></div>
+    
+    <div class="hero-content">
+        <h1 style="font-size: 4rem; margin: 0;">La Gauchada</h1>
+        <p style="font-size: 1.2rem; letter-spacing: 4px;">EXPERIENCIA BIEN ARGENTINA</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2 class="category-title" id="cafe" data-aos="fade-down">☕ Cafetería & Campo</h2>
+    <div class="menu-grid">
+        <div class="plato-card" data-aos="flip-left">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">El Provinciano</h3>
+                <span class="plato-price">$3.200</span>
+                <p>Mate cocido en taza de barro con tortas fritas.</p>
+            </div>
+        </div>
+        <div class="plato-card" data-aos="flip-left" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">Medialunas Olivos</h3>
+                <span class="plato-price">$5.500</span>
+                <p>Gigante, rellena de jamón y queso fundido.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="category-title" id="principales" data-aos="fade-down">🥩 Nuestra Parrilla</h2>
+    <div class="menu-grid">
+        <div class="plato-card" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">Vacío del Fino</h3>
+                <span class="plato-price">$19.800</span>
+                <p>Corte jugoso, 2 horas de cocción lenta.</p>
+            </div>
+        </div>
+        <div class="plato-card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">Entraña Criolla</h3>
+                <span class="plato-price">$22.500</span>
+                <p>La reina de la casa, con chimichurri casero.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="category-title" id="postres" data-aos="fade-down">🍮 Postres Tradicionales</h2>
+    <div class="menu-grid">
+        <div class="plato-card" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1579954115545-a95591f28be0?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">Arroz con Leche</h3>
+                <span class="plato-price">$2.900</span>
+                <p>Receta de la abuela con canela y limón.</p>
+            </div>
+        </div>
+        <div class="plato-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=500" class="plato-img">
+            <div class="plato-body">
+                <h3 class="plato-name">Don Pedro</h3>
+                <span class="plato-price">$5.500</span>
+                <p>Vainilla, whisky y nueces picadas.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<a href="https://wa.me/5491112345678" class="wsp-float">💬</a>
+
+<footer style="background: var(--marron-cuero); color: white; padding: 60px; text-align: center;">
+    <h2>La Gauchada</h2>
+    <p>Tradición que se siente en cada bocado.</p>
+    <p>📍 Buenos Aires, Argentina</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Lógica del Slider
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+</script>
+
+</body>
+</html>
